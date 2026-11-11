@@ -1,0 +1,320 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    background-color: #0d0e12;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* 90~100% 구간 전용 전체 레드 반전 스타일 */
+body.extreme-red {
+    background-color: #ef4444 !important;
+    color: #000000 !important;
+}
+
+body.extreme-red .logo-text h1,
+body.extreme-red .logo-text span,
+body.extreme-red .header-badge,
+body.extreme-red .result-label,
+body.extreme-red .result-desc,
+body.extreme-red .footer {
+    color: #000000 !important;
+}
+
+body.extreme-red .shield-icon {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+body.extreme-red .shield-icon svg {
+    stroke: #000000 !important;
+}
+
+body.extreme-red .header-badge {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+body.extreme-red .result-card {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+body.extreme-red .retry-btn {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.extreme-red .spinner {
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    border-top-color: #000000 !important;
+}
+
+/* 헤더 */
+.header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.shield-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #1a1012;
+    border: 1px solid #331518;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.logo-text span {
+    font-size: 12px;
+    color: #71717a;
+}
+
+.header-badge {
+    background-color: #16171d;
+    border: 1px solid #27272a;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 13px;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+    width: 100%;
+    max-width: 720px;
+    padding: 20px;
+    text-align: center;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.highlight-red {
+    color: #ef4444;
+    text-decoration: underline;
+    text-decoration-color: #ef4444;
+    text-underline-offset: 6px;
+}
+
+.hero-sub {
+    color: #a1a1aa;
+    font-size: 15px;
+    margin-bottom: 36px;
+    line-height: 1.5;
+}
+
+/* 드롭존 업로드 박스 */
+.dropzone {
+    border: 1px dashed #27272a;
+    border-radius: 16px;
+    padding: 48px 32px;
+    background-color: #121318;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropzone:hover {
+    border-color: #52525b;
+    background-color: #16171e;
+}
+
+.upload-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #1f1215;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dropzone h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.file-hint {
+    font-size: 13px;
+    color: #71717a;
+    margin-bottom: 24px;
+}
+
+.upload-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.upload-btn:hover {
+    transform: scale(1.03);
+}
+
+#file-input {
+    display: none;
+}
+
+/* 색상 구간 프리뷰 뱃지 목록 */
+.color-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #121318;
+    border: 1px solid #27272a;
+}
+
+.badge-blue { color: #3b82f6; border-color: rgba(59, 130, 246, 0.3); }
+.badge-green { color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+.badge-yellow { color: #eab308; border-color: rgba(234, 179, 8, 0.3); }
+.badge-orange { color: #f97316; border-color: rgba(249, 115, 22, 0.3); }
+.badge-red { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
+.badge-extreme { color: #ef4444; border-color: #ef4444; background-color: #1f1215; }
+
+/* 로딩 화면 */
+.loading-box {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid #ef4444;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.loading-sub {
+    font-size: 14px;
+    color: #71717a;
+}
+
+/* 결과 카드 */
+.result-card {
+    background-color: #121318;
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    padding: 48px 32px;
+}
+
+.result-label {
+    font-size: 15px;
+    color: #a1a1aa;
+    margin-bottom: 12px;
+}
+
+.percentage-display {
+    font-size: 84px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -2px;
+}
+
+.result-desc {
+    font-size: 16px;
+    color: #d4d4d8;
+    margin-bottom: 32px;
+}
+
+.retry-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.retry-btn:hover {
+    transform: scale(1.04);
+}
+
+/* 푸터 */
+.footer {
+    padding: 24px;
+    font-size: 13px;
+    color: #52525b;
+}
