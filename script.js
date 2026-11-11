@@ -20,18 +20,6 @@ function handleFileUpload(event) {
 }
 
 function analyzeImageFile(file) {
-    const fileNameLower = file.name.toLowerCase();
-
-    // 🚀 발표 시연용 치트키 (파일 이름으로 결과값 완벽 제어)
-    if (fileNameLower.includes('fake') || fileNameLower.includes('danger') || fileNameLower.includes('99') || fileNameLower.includes('err')) {
-        setTimeout(() => { renderResult(95); }, 1800); // 95% (빨간 화면 반전)
-        return;
-    }
-    if (fileNameLower.includes('clean') || fileNameLower.includes('real') || fileNameLower.includes('1')) {
-        setTimeout(() => { renderResult(5); }, 1800); // 5% (파란 화면)
-        return;
-    }
-
     const reader = new FileReader();
     reader.onload = (e) => {
         const img = new Image();
