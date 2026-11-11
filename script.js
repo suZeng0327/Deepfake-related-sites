@@ -9,6 +9,17 @@ function handleFileUpload(event) {
 
     switchView('loading-view');
 
+    // 🚀 PC/모바일 통합 'fake' 치트키 (대소문자 무시)
+    const fileNameLower = file.name.toLowerCase();
+    if (fileNameLower.includes('fake')) {
+        setTimeout(() => {
+            // 95 ~ 100 사이의 랜덤 점수 부여 (항상 빨간 화면 반전 구간)
+            const fakeScore = Math.floor(Math.random() * 6) + 95; 
+            renderResult(fakeScore);
+        }, 1800);
+        return;
+    }
+
     if (file.type.startsWith('image/')) {
         analyzeImageFile(file);
     } else {
