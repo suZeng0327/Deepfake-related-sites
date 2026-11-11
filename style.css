@@ -340,3 +340,46 @@ body.extreme-red .spinner {
     font-size: 13px;
     color: #52525b;
 }
+
+/* 위험 체험 1회성 버튼 스타일 */
+.demo-mode-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #16171d;
+    border: 1px solid #27272a;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.demo-checkbox-label:hover {
+    border-color: #ef4444;
+    background-color: #1a1012;
+}
+
+.demo-checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #ef4444;
+    cursor: pointer;
+}
+
+.demo-text {
+    font-size: 13px;
+    color: #a1a1aa;
+    font-weight: 500;
+}
+
+.demo-checkbox-label input[type="checkbox"]:checked + .demo-text {
+    color: #ef4444;
+    font-weight: 600;
+}

@@ -9,17 +9,18 @@ function handleFileUpload(event) {
 
     switchView('loading-view');
 
-    // 🚀 PC/모바일 통합 'fake' 치트키 (대소문자 무시)
-    const fileNameLower = file.name.toLowerCase();
-    if (fileNameLower.includes('fake')) {
+    // 🚀 '위험 체험' 체크박스가 켜져 있는지 확인
+    const dangerCheckbox = document.getElementById('danger-mode-checkbox');
+    if (dangerCheckbox && dangerCheckbox.checked) {
         setTimeout(() => {
-            // 95 ~ 100 사이의 랜덤 점수 부여 (항상 빨간 화면 반전 구간)
-            const fakeScore = Math.floor(Math.random() * 6) + 95; 
-            renderResult(fakeScore);
+            // 95 ~ 100 사이의 랜덤 점수 부여 (빨간 화면 반전 구간)
+            const randomDangerScore = Math.floor(Math.random() * 6) + 95; 
+            renderResult(randomDangerScore);
         }, 1800);
         return;
     }
 
+    // 체크되어 있지 않으면 기존 정상 픽셀 분석 수행
     if (file.type.startsWith('image/')) {
         analyzeImageFile(file);
     } else {
@@ -144,5 +145,12 @@ function switchView(viewId) {
 function resetApp() {
     document.body.classList.remove('extreme-red');
     document.getElementById('file-input').value = '';
+    
+    // 🚀 다시하기 누를 때 위험 체험 버튼 자동 해제 (1회성 처리)
+    const dangerCheckbox = document.getElementById('danger-mode-checkbox');
+    if (dangerCheckbox) {
+        dangerCheckbox.checked = false;
+    }
+
     switchView('upload-view');
 }
