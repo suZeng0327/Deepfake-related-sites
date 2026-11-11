@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('file-input');
+    const dangerCheckbox = document.getElementById('danger-mode-checkbox');
+
     fileInput.addEventListener('change', handleFileUpload);
+
+    // 모바일에서도 체크박스 상태를 정상적으로 반영
+    dangerCheckbox.addEventListener('change', function () {
+        this.checked = Boolean(this.checked);
+    });
 });
 
 function handleFileUpload(event) {
